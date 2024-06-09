@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Enter Student Details</h1>
-        <form action="/submit" method="POST" id="submit-form">
+        <form id="submit-form">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
             
@@ -64,19 +64,7 @@
                 });
             }
         }
-
-
-        document.getElementById('submit-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const formData = new FormData(this);
-    const queryString = new URLSearchParams(formData).toString(); // Convert form data to query string
-
-    // Redirect to notes.html with query parameters
-    window.location.href = 'notes.html?' + queryString;
-});
-
     </script>
-    <script src="/static/app.js"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>

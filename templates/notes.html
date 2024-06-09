@@ -69,12 +69,7 @@
     
         // Update download button URL with dynamic filename
         const downloadButton = document.getElementById('downloadButton');
-        downloadButton.href = `{{ url_for('static', filename='notes/' + course.toLowerCase() + '_' + semester.replace(' ', '_').toLowerCase() + '_' + subject.replace(' ', '_').toLowerCase() + '.pdf') }}`;
-    
-        // You can use the retrieved data as needed, for example:
-        // document.getElementById('name').textContent = name;
-        // document.getElementById('email').textContent = email;
-        // document.getElementById('phone').textContent = phone;
+        downloadButton.href = `static/notes/${course.toLowerCase()}_${semester.replace(' ', '_').toLowerCase()}_${subject.replace(' ', '_').toLowerCase()}.pdf`;
     </script>
     
 </body>
