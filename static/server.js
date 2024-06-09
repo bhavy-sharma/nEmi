@@ -3,7 +3,7 @@ document.getElementById('submit-form').addEventListener('submit', function(event
 
     const formData = new FormData(this);
 
-    fetch('https://script.google.com/macros/s/AKfycbye6uAECtJohxg0gEdxohdCDAsK142VOVS1oS0QRQr8J2P1j-Hu1Uh4vCArsidNR_UbrQ/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbzVkjLqkY0ZGjf4QmoFAnaPQU3WGmoLIll3hTF2uIAkpxGYmMFQTJRtop0Cc71ucgbCVA/exec', {
         method: 'POST',
         body: formData
     })

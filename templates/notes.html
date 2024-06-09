@@ -34,13 +34,15 @@
 <body>
     <div class="container">
         <div class="card">
-            <div class="card-header">
-                {{ subject }} Notes
+            <div class="card-header" id="subjectHeader">
+                <!-- Subject header will be populated dynamically -->
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{ course }} - {{ semester }}</h5>
+                <h5 class="card-title" id="courseSemesterHeader">
+                    <!-- Course and semester header will be populated dynamically -->
+                </h5>
                 <p class="card-text">Click the button below to download your notes.</p>
-                <a href="{{ url_for('static', filename='notes/' + course.lower() + '_' + semester.replace(' ', '_').lower() + '_' + subject.replace(' ', '_').lower() + '.pdf') }}" download class="btn btn-download">Download {{ subject }} Notes</a>
+                <a href="#" download class="btn btn-download" id="downloadButton">Download Notes</a>
             </div>
         </div>
     </div>
@@ -48,5 +50,32 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Parse query parameters from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        const email = urlParams.get('email');
+        const course = urlParams.get('course');
+        const semester = urlParams.get('semester');
+        const subject = urlParams.get('subject');
+        const phone = urlParams.get('phone');
+    
+        // Populate the header with course and semester
+        document.getElementById('courseSemesterHeader').textContent = course + ' - ' + semester + ' Notes';
+    
+        // Populate the subject header
+        document.getElementById('subjectHeader').textContent = subject + ' Notes';
+    
+        // Update download button URL with dynamic filename
+        const downloadButton = document.getElementById('downloadButton');
+        downloadButton.href = `{{ url_for('static', filename='notes/' + course.toLowerCase() + '_' + semester.replace(' ', '_').toLowerCase() + '_' + subject.replace(' ', '_').toLowerCase() + '.pdf') }}`;
+    
+        // You can use the retrieved data as needed, for example:
+        // document.getElementById('name').textContent = name;
+        // document.getElementById('email').textContent = email;
+        // document.getElementById('phone').textContent = phone;
+    </script>
+    
 </body>
 </html>
