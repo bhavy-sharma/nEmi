@@ -3,6 +3,11 @@
   font-family: Arial, sans-serif;
 }
 
+.footer {
+  text-align: center;
+  margin-top: 15px;
+}
+
 body {
   width: 100vw;
   height: 100vh;
