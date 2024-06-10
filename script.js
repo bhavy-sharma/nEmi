@@ -5,6 +5,12 @@ document.getElementById('submit-form').addEventListener('submit', function(event
     const data = {};
     formData.forEach((value, key) => data[key] = value);
 
+    const phoneNumber = data['phone'];
+    if (!/^\d{10}$/.test(phoneNumber)) {
+        alert('Please enter a valid 10-digit phone number.');
+        return;
+    }
+
     fetch('https://script.google.com/macros/s/AKfycbx_RDw5qvo1M95IDus-Zj0L30aJuSt7n47tmnPkAd-zN1LYGvnqOvMsGQ3cnIZHqW6Z1A/exec', { // Replace with your Google Apps Script Web App URL
         method: 'POST',
         body: new URLSearchParams(data),
