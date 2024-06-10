@@ -11,6 +11,11 @@ document.getElementById('submit-form').addEventListener('submit', function(event
         return;
     }
 
+    // Disable the submit button to prevent multiple submissions
+    const submitButton = document.getElementById('submit-button');
+    submitButton.disabled = true;
+    submitButton.value = 'Submitting...';
+
     fetch('https://script.google.com/macros/s/AKfycbx_RDw5qvo1M95IDus-Zj0L30aJuSt7n47tmnPkAd-zN1LYGvnqOvMsGQ3cnIZHqW6Z1A/exec', { // Replace with your Google Apps Script Web App URL
         method: 'POST',
         body: new URLSearchParams(data),
@@ -26,5 +31,8 @@ document.getElementById('submit-form').addEventListener('submit', function(event
     })
     .catch(error => {
         console.error('There was a problem with the form submission:', error);
+        // Re-enable the submit button if there was an error
+        submitButton.disabled = false;
+        submitButton.value = 'Submit';
     });
 });
