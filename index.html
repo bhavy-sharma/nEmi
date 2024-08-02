@@ -29,6 +29,7 @@
                 <option value="" disabled selected>Select Semester</option>
                 <option value="1st sem">1st sem</option>
                 <option value="2nd sem">2nd sem</option>
+                <option value="3rd sem">3rd sem</option>
             </select>
             
             <label for="subject">Subject:</label>
@@ -62,6 +63,14 @@
                 });
             } else if (semester === '2nd sem') {
                 const subjects = ['Mathematics-II', 'C-Programming', 'Organization Behavior', 'Digital Electronics and Computer Organisation', 'Financial Accounting and Management', 'Computer Laboratory and Practical Work of C'];
+                subjects.forEach(subject => {
+                    const option = document.createElement('option');
+                    option.value = subject;
+                    option.text = subject;
+                    subjectDropdown.appendChild(option);
+                });
+            } else if (semester === '3rd sem') {
+                const subjects = ['OOPS Lab File', 'DS Lab File'];
                 subjects.forEach(subject => {
                     const option = document.createElement('option');
                     option.value = subject;
