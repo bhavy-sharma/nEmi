@@ -62,14 +62,14 @@
         const phone = urlParams.get('phone');
     
         // Populate the header with course and semester
-        document.getElementById('courseSemesterHeader').textContent = course + ' - ' + semester + ' Notes';
+        document.getElementById('courseSemesterHeader').textContent = `${course} - ${semester} Notes`;
     
         // Populate the subject header
-        document.getElementById('subjectHeader').textContent = subject + ' Notes';
+        document.getElementById('subjectHeader').textContent = `${subject} Notes`;
     
-        // Update download button URL with dynamic filename
+        // Update download button URL with dynamic filename, replacing spaces with underscores
         const downloadButton = document.getElementById('downloadButton');
-        downloadButton.href = `notes/${course.toLowerCase()}_${semester.replace(' ', '_').toLowerCase()}_${subject.replace(' ', '_').toLowerCase()}.pdf`;
+        downloadButton.href = `notes/${course.toLowerCase().replace(/\s+/g, '_')}_${semester.toLowerCase().replace(/\s+/g, '_')}_${subject.toLowerCase().replace(/\s+/g, '_')}.pdf`;
     </script>
     
 </body>
