@@ -3,11 +3,6 @@
   font-family: Arial, sans-serif;
 }
 
- .container .footer {
-  text-align: center;
-  margin-top: 15px;
-}
-
 body {
   width: 100vw;
   height: 100vh;
@@ -25,7 +20,7 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 2px solid #f9a743; /* Added border */
+  border: 2px solid #f9a743;
 }
 
 .header {
@@ -50,7 +45,6 @@ form {
 .form-group {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   margin-bottom: 10px;
 }
 
@@ -69,6 +63,26 @@ select {
   font-size: 14px;
 }
 
+/* Styling for Phone Number: Label and Input on Same Line */
+.form-group.inline {
+  display: flex;
+  align-items: center;
+}
+
+.form-group.inline label {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-group.inline input {
+  flex: 2;
+}
+
+/* Hide chapter select field by default */
+#chapter-container {
+  display: none;
+}
+
 button[type="submit"] {
   padding: 10px 20px;
   background-color: #f9a743;
@@ -83,4 +97,9 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #f9db5f;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 15px;
 }

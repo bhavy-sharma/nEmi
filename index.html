@@ -12,74 +12,104 @@
     <div class="container">
         <h1>Enter Student Details</h1>
         <form id="submit-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
             
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" pattern=".+@gmail\.com" required>
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" pattern=".+@gmail\.com" required>
+            </div>
+
+            <!-- Course Field -->
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <select id="course" name="course" required>
+                    <option value="" disabled selected>Select Course</option>
+                    <option value="BCA">BCA</option>
+                </select>
+            </div>
+
+            <!-- Semester Field -->
+            <div class="form-group">
+                <label for="semester">Semester:</label>
+                <select id="semester" name="semester" required onchange="populateSubjects(this.value)">
+                    <option value="" disabled selected>Select Semester</option>
+                    <option value="1st sem">1st sem</option>
+                    <option value="2nd sem">2nd sem</option>
+                    <option value="3rd sem">3rd sem</option>
+                </select>
+            </div>
             
-            <label for="course">Course:</label>
-            <select id="course" name="course" required>
-                <option value="" disabled selected>Select Course</option>
-                <option value="BCA">BCA</option>
-            </select>
-            
-            <label for="semester">Semester:</label>
-            <select id="semester" name="semester" required onchange="populateSubjects(this.value)">
-                <option value="" disabled selected>Select Semester</option>
-                <option value="1st sem">1st sem</option>
-                <option value="2nd sem">2nd sem</option>
-                <option value="3rd sem">3rd sem</option>
-            </select>
-            
-            <label for="subject">Subject:</label>
-            <select id="subject" name="subject" required>
-                <option value="" disabled selected>Select Subject</option>
-            </select>
-            
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" required>
-            
-            <input type="submit" id="submit-button" value="Submit">
+            <!-- Subject Field -->
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <select id="subject" name="subject" required>
+                    <option value="" disabled selected>Select Subject</option>
+                </select>
+            </div>
+
+            <!-- Chapter Select Field, Initially Hidden -->
+            <div class="form-group" id="chapter-container" style="display: none;">
+                <label for="chapter">Select Chapter:</label>
+                <select id="chapter" name="chapter">
+                    <option value="" disabled selected>Select Chapter</option>
+                    <option value="chapter 4">Chapter 4</option>
+                    <option value="chapter 5">Chapter 5</option>
+                </select>
+            </div>
+
+            <!-- Phone Number Field (Inline Layout) -->
+            <div class="form-group inline">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submit-button">Submit</button>
         </form>
 
         <div class="footer"><a href="https://bhavy-sharma.github.io/protfolio/"><b>Code with Bhavy</b></a></div>
     </div>
-    <!-- End of Student Details Form -->
 
-    <script src="script.js"></script>
     <script>
+        // Function to populate subjects based on selected semester
         function populateSubjects(semester) {
             const subjectDropdown = document.getElementById('subject');
-            subjectDropdown.innerHTML = ''; // Clear existing options
+            const chapterContainer = document.getElementById('chapter-container');
+            subjectDropdown.innerHTML = '<option value="" disabled selected>Select Subject</option>'; // Clear existing options
             
+            let subjects = [];
             if (semester === '1st sem') {
-                const subjects = ['Mathematics-I', 'Maths Internal', 'Computer Fundamental and Office Automation', 'Computer Fundamental Office Automation internal', 'Computer Fundamental office automation lab file', 'Environmental Studies', 'Programming Principal Internal', 'Business Communication internal', 'Principal of Management internal'];
-                subjects.forEach(subject => {
-                    const option = document.createElement('option');
-                    option.value = subject;
-                    option.text = subject;
-                    subjectDropdown.appendChild(option);
-                });
+                subjects = ['Mathematics-I', 'Maths Internal', 'Computer Fundamental and Office Automation', 'Environmental Studies'];
             } else if (semester === '2nd sem') {
-                const subjects = ['Mathematics-II', 'C-Programming', 'Organization Behavior', 'Digital Electronics and Computer Organisation', 'Financial Accounting and Management'];
-                subjects.forEach(subject => {
-                    const option = document.createElement('option');
-                    option.value = subject;
-                    option.text = subject;
-                    subjectDropdown.appendChild(option);
-                });
+                subjects = ['Mathematics-II', 'C-Programming', 'Organization Behavior', 'Digital Electronics'];
             } else if (semester === '3rd sem') {
-                const subjects = ['OOPS Lab File', 'DS Lab File', 'Maths'];
-                subjects.forEach(subject => {
-                    const option = document.createElement('option');
-                    option.value = subject;
-                    option.text = subject;
-                    subjectDropdown.appendChild(option);
-                });
+                subjects = ['Maths', 'OOPS Lab File', 'DS Lab File'];
             }
+
+            // Populate subject dropdown
+            subjects.forEach(subject => {
+                const option = document.createElement('option');
+                option.value = subject;
+                option.text = subject;
+                subjectDropdown.appendChild(option);
+            });
+
+            // Add event listener for "Maths" subject when semester is "3rd sem"
+            subjectDropdown.addEventListener('change', function () {
+                if (semester === '3rd sem' && this.value === 'Maths') {
+                    chapterContainer.style.display = 'block'; // Show chapter select field
+                } else {
+                    chapterContainer.style.display = 'none'; // Hide chapter select field
+                }
+            });
         }
     </script>
-    
+    <script src="script.js"></script>
+
 </body>
 </html>

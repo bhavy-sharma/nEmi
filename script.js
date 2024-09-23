@@ -14,7 +14,7 @@ document.getElementById('submit-form').addEventListener('submit', function(event
     // Disable the submit button to prevent multiple submissions
     const submitButton = document.getElementById('submit-button');
     submitButton.disabled = true;
-    submitButton.value = 'Submitting...';
+    submitButton.innerHTML = 'Submitting...';  // Use innerHTML for button
 
     fetch('https://script.google.com/macros/s/AKfycbx_RDw5qvo1M95IDus-Zj0L30aJuSt7n47tmnPkAd-zN1LYGvnqOvMsGQ3cnIZHqW6Z1A/exec', { // Replace with your Google Apps Script Web App URL
         method: 'POST',
@@ -33,6 +33,6 @@ document.getElementById('submit-form').addEventListener('submit', function(event
         console.error('There was a problem with the form submission:', error);
         // Re-enable the submit button if there was an error
         submitButton.disabled = false;
-        submitButton.value = 'Submit';
+        submitButton.innerHTML = 'Submit';  // Use innerHTML to reset button text
     });
 });
