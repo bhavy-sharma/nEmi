@@ -6,21 +6,24 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: #ffeeba;
+  background-color: #85e061;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
   padding: 0;
+  /* background-image: url("Gemini_Generated_Image_mn6k3ymn6k3ymn6k.jpeg"); */
+  /* background-size:unset ; */
 }
 
 .container {
-  background-color: #fff;
+  background-color: transparent;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 2px solid #f9a743;
+  border: 2px solid transparent;
+  box-shadow: 5px 5px 10px black;
 }
 
 .header {
@@ -46,6 +49,7 @@ form {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  /* transition: .5s; */
 }
 
 label {
@@ -85,7 +89,7 @@ select {
 
 button[type="submit"] {
   padding: 10px 20px;
-  background-color: #f9a743;
+  background-color: #568203;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -96,10 +100,27 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #f9db5f;
+  background-color: #006A4E;
 }
 
 .footer {
   text-align: center;
   margin-top: 15px;
+}
+
+a{
+  
+  color: #D0F0C0;
+}
+a:hover{
+  color: white;
+  transition: 1s ease-in-out;
+}
+
+input, select{
+  background-color: #57ce12;
+}
+
+h1{
+  color: #243946;
 }
