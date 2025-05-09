@@ -16,7 +16,7 @@ document.getElementById('submit-form').addEventListener('submit', function(event
     submitButton.disabled = true;
     submitButton.innerHTML = 'Submitting...';  // Use innerHTML for button
 
-    fetch('https://script.google.com/macros/s/AKfycbx_RDw5qvo1M95IDus-Zj0L30aJuSt7n47tmnPkAd-zN1LYGvnqOvMsGQ3cnIZHqW6Z1A/exec', { // Replace with your Google Apps Script Web App URL
+    fetch('https://script.google.com/macros/s/AKfycbybRNqmjg5z8GcCzc2U3muxdd480Jyc3P39j0VvuHj0LYhWtWjzh5sEl373fhy8oa7a4g/exec', { // Replace with your Google Apps Script Web App URL
         method: 'POST',
         body: new URLSearchParams(data),
     })
